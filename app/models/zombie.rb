@@ -4,7 +4,8 @@ class Zombie < ActiveRecord::Base
   has_many :weapons
 
   def eat_brains
-    # self.iq += 3
+    self.iq += 3
+    self.hungry = false
   end
 
   def dummy?
@@ -14,4 +15,16 @@ class Zombie < ActiveRecord::Base
   def genius?
     iq >= 3
   end
-end
+
+  def craving
+    if vegetarian
+      'vegan brains'
+    else 
+      'brains'
+    end
+  end
+
+  def swing(weapon)
+    true
+  end
+end 

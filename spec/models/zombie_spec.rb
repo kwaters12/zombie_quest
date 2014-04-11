@@ -2,7 +2,7 @@ require 'spec_helper'
 describe Zombie do
   let(:zombie) { Zombie.create }
   subject { zombie }
-  before {zombie.eat_brains}
+  # before {zombie.eat_brains}
 
   it_behaves_like 'the brainless'
   
@@ -34,7 +34,9 @@ describe Zombie do
     zombie.tweets.should include(tweet2)
   end
   it 'starts with two weapons' do
-    zombie = Zombie.new(name: 'Ash')
+    zombie = Zombie.create!(name: 'Ash')
+    weapon1 = zombie.weapons.new
+    weapon2 = zombie.weapons.new
     zombie.should have(2).weapons
   end
   it 'changes the number of Zombies' do
@@ -50,12 +52,15 @@ describe Zombie do
   it 'responds to name' do
     should respond_to(:name)
   end
+
   # Also works, and rspec will generate debug text that is readable
   # it { should respond_to(:name)}
-  its(:name) { should == 'Ash' }
-  its(:weapons) { should include(weapon) }
-  its(:brain) { should be_nil }
-  its('tweets.size') { should == 2 }
+
+  # Examples of its
+  # its(:name) { should == 'Ash' }
+  # its(:weapons) { should include(weapon) }
+  # its(:iq) { should be_nil }
+  # its('tweets.size') { should == 2 }
 
   context 'when hungry' do
     it 'craves brains'
@@ -75,17 +80,9 @@ describe Zombie do
   end
 
   it 'should not be hungry after eating brains' do
-    expect { zombie.eat(:brains) }.to change {
+    expect { zombie.eat_brains }.to change {
       zombie.hungry
     }.from(true).to(false)
-  end
-
-  it 'is not a dummy zombie' do
-    zombie.should_not be_dummy
-  end
-
-  it 'is a genius zombie' do
-    zombie.should be_genius
   end
 
 end

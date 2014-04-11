@@ -3,7 +3,8 @@ class CreateZombies < ActiveRecord::Migration
     create_table :zombies do |t|
       t.string :name
       t.integer :iq, default: 0
-      t.boolean :vegetarian
+      t.boolean :vegetarian, default: false
+      t.boolean :hungry, default: true
 
       t.timestamps
     end

@@ -42,7 +42,8 @@ ActiveRecord::Schema.define(version: 20140411211739) do
   create_table "zombies", force: true do |t|
     t.string   "name"
     t.integer  "iq",         default: 0
-    t.boolean  "vegetarian"
+    t.boolean  "vegetarian", default: false
+    t.boolean  "hungry",     default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
