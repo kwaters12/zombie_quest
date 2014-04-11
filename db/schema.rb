@@ -11,6 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140411211739) do
+
+  create_table "plants", force: true do |t|
+    t.string   "name"
+    t.integer  "iq",         default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tweets", force: true do |t|
+    t.string   "status"
+    t.integer  "zombie_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tweets", ["zombie_id"], name: "index_tweets_on_zombie_id"
+
+  create_table "weapons", force: true do |t|
+    t.string   "name"
+    t.integer  "strength"
+    t.integer  "zombie_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "weapons", ["zombie_id"], name: "index_weapons_on_zombie_id"
+
+  create_table "zombies", force: true do |t|
+    t.string   "name"
+    t.integer  "iq",         default: 0
+    t.boolean  "vegetarian"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

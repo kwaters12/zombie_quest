@@ -4,8 +4,7 @@ class Zombie < ActiveRecord::Base
   has_many :weapons
 
   def eat_brains
-    hungry = false
-    self.iq += 3
+    # self.iq += 3
   end
 
   def dummy?
