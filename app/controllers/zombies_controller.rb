@@ -1,0 +1,2 @@
+class ZombiesController < ApplicationController
+end
